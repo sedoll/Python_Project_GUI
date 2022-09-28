@@ -45,7 +45,7 @@ def webCrawling(uid, upw, search, pages, syear, eyear):
     
     options = webdriver.ChromeOptions()
     # options.headless = True # 웹페이지가 보이지 않고 프로그램 실행
-    # options.add_argument("winddow-size=1920x1080") # 웹페이지가 보이지 않고 프로그램 실행
+    # options.add_argument("winddow-size=1920x1080") # 웹페이지 크기를 FHD로 설정
     options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36")
 
     str = ''
@@ -148,9 +148,6 @@ text_page.place(x=70, y=160, width=150, height=20)
 btn = Button(root, text='입력', command=btncmd)
 btn.place(x=10, y=200, width=80, height=40)
 
-
-
-
 root.resizable(width=False, height=False) # 창 크기 조절 불가
 root.mainloop() # 창이 딛히지 않도록 해줌
-root.quit()
+root.quit() # gui 창이 종료되면 프로세스 종료
