@@ -1,6 +1,6 @@
 # 메세지 박스
-from ast import ExceptHandler
 import tkinter.messagebox as msgbox
+from turtle import window_height, window_width
 import pyperclip
 import time
 import csv
@@ -11,9 +11,20 @@ from selenium.webdriver.common.action_chains import ActionChains
 from random import randrange as rd
 from tkinter import *
 
+# gui 크기 조정
+h = 40
+w1 = 70
+w2 = 150
+x1 = 20
+x2 = 100
+font_size = 20
+window_height = 480
+window_width = 640
+
 root = Tk()
 root.title('네이버 뉴스 라이브러리 크롤링 프로그램') # 창 제목
-root.geometry('640x480') # 가로 * 세로 크기 지정
+root.geometry(f'{window_width}x{window_height}') # 가로 * 세로 크기 지정
+
 
 # 딜레이 시간
 t_min = 3
@@ -87,6 +98,7 @@ def webCrawling(uid, upw, search, pages, syear, eyear):
 
     print('크롤링 완료')
     browser.quit()
+    msgbox.showinfo('완료', '크롤링이 완료 되었습니다.')
 
 def btncmd():
     global input_id, input_pw, input_content, input_syear, input_eyear, input_page
@@ -107,46 +119,46 @@ def btncmd():
         pass
 
 # 아이디 입력
-label_id = Label(root, text='아이디') # 레이블에 글자 출력
-label_id.place(x=10, y=10, width=50, height=20)
-text_id = Entry(root)
-text_id.place(x=70, y=10, width=150, height=20)
+label_id = Label(root, text='아이디', font=font_size) # 레이블에 글자 출력
+label_id.place(x=x1, y=10, width=w1, height=h)
+text_id = Entry(root, width=30, font=font_size)
+text_id.place(x=x2, y=10, width=w2, height=h)
 
 # 비밀번호 입력
-label_pw = Label(root, text='비밀번호') # 레이블에 글자 출력
-label_pw.place(x=10, y=40,  width=50, height=20)
-text_pw = Entry(root, width=30, show='*')
-text_pw.place(x=70, y=40, width=150, height=20)
+label_pw = Label(root, text='비밀번호', font=font_size) # 레이블에 글자 출력
+label_pw.place(x=x1, y=60,  width=w1, height=h)
+text_pw = Entry(root, width=30, show='*', font=font_size)
+text_pw.place(x=x2, y=60, width=w2, height=h)
 
 # 주제 입력
-label_content = Label(root, text='주제') # 레이블에 글자 출력
-label_content.place(x=10, y=70,  width=50, height=20)
-text_content = Entry(root, width=30)
-text_content.place(x=70, y=70, width=150, height=20)
+label_content = Label(root, text='주제', font=font_size) # 레이블에 글자 출력
+label_content.place(x=x1, y=110,  width=w1, height=h)
+text_content = Entry(root, width=30, font=font_size)
+text_content.place(x=x2, y=110, width=w2, height=h)
 
 # 시작 연도
-label_syear = Label(root, text='시작 연도') # 레이블에 글자 출력
-label_syear.place(x=10, y=100,  width=50, height=20)
-text_syear = Entry(root, width=30)
+label_syear = Label(root, text='시작 연도', font=font_size) # 레이블에 글자 출력
+label_syear.place(x=x1, y=160,  width=w1, height=h)
+text_syear = Entry(root, width=30, font=font_size)
 text_syear.insert(0, input_syear)
-text_syear.place(x=70, y=100, width=150, height=20)
+text_syear.place(x=x2, y=160, width=w2, height=h)
 
 # 끝 연도
-label_eyear = Label(root, text='끝 연도') # 레이블에 글자 출력
-label_eyear.place(x=10, y=130,  width=50, height=20)
-text_eyear = Entry(root, width=30)
+label_eyear = Label(root, text='끝 연도', font=font_size) # 레이블에 글자 출력
+label_eyear.place(x=x1, y=210,  width=w1, height=h)
+text_eyear = Entry(root, width=30, font=font_size)
 text_eyear.insert(0, input_eyear)
-text_eyear.place(x=70, y=130, width=150, height=20)
+text_eyear.place(x=x2, y=210, width=w2, height=h)
 
 # 페이지
-label_page = Label(root, text='페이지') # 레이블에 글자 출력
-label_page.place(x=10, y=160,  width=50, height=20)
-text_page = Entry(root, width=30)
+label_page = Label(root, text='페이지', font=font_size) # 레이블에 글자 출력
+label_page.place(x=x1, y=260,  width=w1, height=h)
+text_page = Entry(root, width=30, font=font_size)
 text_page.insert(0, input_page)
-text_page.place(x=70, y=160, width=150, height=20)
+text_page.place(x=x2, y=260, width=w2, height=h)
 
 btn = Button(root, text='입력', command=btncmd)
-btn.place(x=10, y=200, width=80, height=40)
+btn.place(x=x1, y=310, width=80, height=h)
 
 root.resizable(width=False, height=False) # 창 크기 조절 불가
 root.mainloop() # 창이 딛히지 않도록 해줌
